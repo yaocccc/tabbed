@@ -1,5 +1,7 @@
 # 使用
 
+fork from [bakkeby/tabbed-flexipatch](https://github.com/bakkeby/tabbed-flexipatch)
+
 ```plaintext
   sudo make install
   tabbed -n [name] -C [class] -c -r 2 st -w ''
@@ -64,12 +66,3 @@ Refer to [https://tools.suckless.org/tabbed/](https://tools.suckless.org/tabbed/
       - this patch gives tabbed an icon
       - the icon is the currently selected tab's icon
       - if the selected tab has no icon (or no tab is selected), use a default icon
-
-   - [keycode](https://tools.suckless.org/tabbed/patches/keycode/)
-      - with this patch, handling key input is done with keycodes instead of keysyms making the keyboard layout independent
-
-   - [keyrelease](https://tools.suckless.org/tabbed/patches/keyrelease/)
-      - this patch enables for function handling on KeyRelease events
-
-   - [xresources](https://tools.suckless.org/tabbed/patches/xresources/)
-      - allows tabbed colors to be defined via Xresources
