@@ -1,7 +1,9 @@
 # 使用
 
-sudo make install
-tabbed -n [name] -C [class] -c -r 2 st -w ''
+```plaintext
+  sudo make install
+  tabbed -n [name] -C [class] -c -r 2 st -w ''
+```
 
 ---
 
