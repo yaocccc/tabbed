@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+#include <X11/Xlib.h>
 static       char font[]        = "monospace:size=9";
 static       char* selbgcolor   = "#222D31";
 static       char* selfgcolor   = "#cccccc";
@@ -18,6 +19,7 @@ static const int  tabwidth      = 200;
 #endif // AWESOMEBAR_PATCH
 static const Bool foreground    = True;
 static       Bool urgentswitch  = False;
+static const Bool tabcycle      = False;
 
 #if BAR_HEIGHT_PATCH
 static const int barheight = 30;  /* 0 means derive by font (default), otherwise absolute height */
@@ -52,8 +54,10 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,     XK_k,         movetab,     { .i = -1 } },
     { MODKEY|ShiftMask,     XK_j,         movetab,     { .i = +1 } },
 	{ MODKEY,               XK_Tab,       rotate,      { .i = +1 } },
-	{ MODKEY,               XK_Prior,     rotate,      { .i = -1 } },
-	{ MODKEY,               XK_Next,      rotate,      { .i = +1 } },
+	{ 0,                    XK_Prior,     rotate,      { .i = -1 } },
+	{ 0,                    XK_Next,      rotate,      { .i = +1 } },
+	{ 0,                    XK_End,       rotate,      { .i = +99 } },
+	{ 0,                    XK_Home,      rotate,      { .i = -99 } },
 	{ MODKEY,               XK_1,         move,        { .i = 0 } },
 	{ MODKEY,               XK_2,         move,        { .i = 1 } },
 	{ MODKEY,               XK_3,         move,        { .i = 2 } },
