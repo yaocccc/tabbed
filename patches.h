@@ -18,9 +18,3 @@
 
 // 标题栏数字编号
 #define CLIENTNUMBER_PATCH 1
-
-// 标题栏隐藏 当按住shift时显示
-#define HIDETABS_PATCH 0
-
-// tabbed icon
-#define ICON_PATCH )

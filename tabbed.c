@@ -168,9 +168,9 @@ static void (*handler[LASTEvent]) (const XEvent *) = {
 	[PropertyNotify] = propertynotify,
 };
 static int bh, obh, wx, wy, ww, wh;
-#if AUTOHIDE_PATCH || HIDETABS_PATCH
+#if AUTOHIDE_PATCH
 static int vbh;
-#endif // AUTOHIDE_PATCH | HIDETABS_PATCH
+#endif // AUTOHIDE_PATCH
 static unsigned int numlockmask;
 static Bool running = True, nextfocus, doinitspawn = True,
             fillagain = False, closelastclient = False,
@@ -188,9 +188,6 @@ static char **cmd;
 static char *wmname = "tabbed";
 static char *wmclass = "tabbed";
 static const char *geometry;
-#if HIDETABS_PATCH
-static Bool barvisibility = False;
-#endif // HIDETABS_PATCH
 
 #if ALPHA_PATCH
 static Colormap cmap;
@@ -363,9 +360,9 @@ drawbar(void)
 {
 	XftColor *col;
 	int c, cc, fc, width;
-	#if AUTOHIDE_PATCH || HIDETABS_PATCH
+	#if AUTOHIDE_PATCH
 	int nbh;
-	#endif // AUTOHIDE_PATCH | HIDETABS_PATCH
+	#endif // AUTOHIDE_PATCH
 	char *name = NULL;
 	#if CLIENTNUMBER_PATCH
 	char tabtitle[312];
@@ -376,14 +373,8 @@ drawbar(void)
 	int by = 0;
 	#endif // BOTTOM_TABS_PATCH
 
-	#if AUTOHIDE_PATCH || HIDETABS_PATCH
-	#if AUTOHIDE_PATCH && HIDETABS_PATCH
-	nbh = barvisibility && nclients > 1 ? vbh : 0;
-	#elif HIDETABS_PATCH
-	nbh = barvisibility ? vbh : 0;
-	#elif AUTOHIDE_PATCH
+	#if AUTOHIDE_PATCH
 	nbh = nclients > 1 ? vbh : 0;
-	#endif
 	if (nbh != bh) {
 		bh = nbh;
 		#if BOTTOM_TABS_PATCH
@@ -396,7 +387,7 @@ drawbar(void)
 			XMoveResizeWindow(dpy, clients[c]->win, 0, bh, ww, wh - bh);
 			#endif // BOTTOM_TABS_PATCH
 	}
-	#endif // AUTOHIDE_PATCH | HIDETABS_PATCH
+	#endif // AUTOHIDE_PATCH
 
 	if (nclients == 0) {
 		dc.x = 0;
@@ -413,10 +404,10 @@ drawbar(void)
 		return;
 	}
 
-	#if AUTOHIDE_PATCH || HIDETABS_PATCH
+	#if AUTOHIDE_PATCH
 	if (bh == 0)
 		return;
-	#endif // AUTOHIDE_PATCH | HIDETABS_PATCH
+	#endif // AUTOHIDE_PATCH
 
 	width = ww;
 
@@ -1116,11 +1107,11 @@ setup(void)
 	#else
 	dc.h = dc.font.height + 2;
 	#endif // BAR_HEIGHT_PATCH
-	#if AUTOHIDE_PATCH || HIDETABS_PATCH
+	#if AUTOHIDE_PATCH
 	vbh = dc.h;
 	#else
 	bh = dc.h;
-	#endif // AUTOHIDE_PATCH | HIDETABS_PATCH
+	#endif // AUTOHIDE_PATCH
 
 	/* init atoms */
 	wmatom[WMDelete] = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
