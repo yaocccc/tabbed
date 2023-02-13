@@ -58,11 +58,3 @@ Refer to [https://tools.suckless.org/tabbed/](https://tools.suckless.org/tabbed/
 
    - [clientnumber](https://tools.suckless.org/tabbed/patches/clientnumber/)
       - prints the position number of the client before the window title
-
-   - [hidetabs](https://tools.suckless.org/tabbed/patches/hidetabs/)
-      - this patch hides all the tabs and only shows them when Mod+Shift is pressed
-
-   - [icon](https://tools.suckless.org/tabbed/patches/icon/)
-      - this patch gives tabbed an icon
-      - the icon is the currently selected tab's icon
-      - if the selected tab has no icon (or no tab is selected), use a default icon
